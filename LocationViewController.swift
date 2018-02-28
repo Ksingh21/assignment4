@@ -40,7 +40,12 @@ class LocationViewController: UITableViewController {
                     let longitude = placemark.location?.coordinate.longitude {
                     self.LatitudeTextField.text = String (latitude)
                     self.LongitudeTextField.text = String (longitude)
-                }
+                    let alert = UIAlertController(title: "Forward Geocoding Result:", message:
+                    "Latitude: \(self.LatitudeTextField.text!) Longitude: \(self.LongitudeTextField.text)" ,     preferredStyle: .alert)
+                    let popup = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(popup)
+                    self.present(alert, animated: true, completion: nil)
+            }
             }
         })
 
@@ -70,6 +75,11 @@ class LocationViewController: UITableViewController {
                     address = address + postcode + " "
                 }
                 self.LocationTextField.text = address
+                let alert = UIAlertController(title: "Reverse Geocoding Result:", message:
+                    "Location: \(address)"  ,     preferredStyle: .alert)
+                let popup = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(popup)
+                self.present(alert, animated: true, completion: nil)
             }
         })
     }
